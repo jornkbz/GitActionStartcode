@@ -1,0 +1,35 @@
+name: Hangman Front CI
+
+on:
+  pull_request:
+    branches:
+      - main     # Ajusta según la(s) rama(s) donde quieras que se active
+    paths:
+      - 'hangman-front/**'  # Importante: solo se activa si hay cambios dentro de hangman-front
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16  # O la versión que uses
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: hangman-front
+
+      - name: Build project
+        run: npm run build
+        working-directory: hangman-front
+
+      - name: Run tests
+        run: npm test
+        working-directory: hangman-front
+
+
