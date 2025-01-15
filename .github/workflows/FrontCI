@@ -1,4 +1,4 @@
-name: Hangman Front CI
+name: FrontCI
 on:
   push:
     branches: [ main ]
