@@ -1,11 +1,16 @@
 name: Hangman Front CI
-
 on:
   pull_request:
     branches:
       - main     # Ajusta según la(s) rama(s) donde quieras que se active
     paths:
       - '.start-code/hangman-front/**'  # Importante: solo se activa si hay cambios dentro de hangman-front
+  
+  push:
+    branches:
+      - main     # Ajusta según la(s) rama(s) donde quieras que se active
+    paths:
+      - '.start-code/hangman-front/**'  # Importante: solo se activa si hay cambios dentro de hangman-front  
   
 jobs:
   build-and-test:
