@@ -5,8 +5,8 @@ on:
     branches:
       - main     # Ajusta según la(s) rama(s) donde quieras que se active
     paths:
-      - 'hangman-front/**'  # Importante: solo se activa si hay cambios dentro de hangman-front
-
+      - '.start-code/hangman-front/**'  # Importante: solo se activa si hay cambios dentro de hangman-front
+  
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
