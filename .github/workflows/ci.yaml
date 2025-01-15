@@ -31,13 +31,13 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: hangman-front
+        working-directory: .start-code/hangman-front
 
       - name: Build project
         run: npm run build
-        working-directory: hangman-front
+        working-directory: .start-code/hangman-front
 
       - name: Run tests
         run: npm test
-        working-directory: hangman-front
+        working-directory: .start-code/hangman-front
 
