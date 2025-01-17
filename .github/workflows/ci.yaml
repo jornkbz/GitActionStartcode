@@ -31,33 +31,13 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: hangman-front
+        working-directory: .start-code/hangman-front
 
       - name: Build project
         run: npm run build
-        working-directory: hangman-front
+        working-directory: .start-code/hangman-front
 
       - name: Run tests
         run: npm test
-        working-directory: hangman-front
+        working-directory: .start-code/hangman-front
 
-
-name: CI
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
- 
-jobs:
-  audit:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Inspect machine
-        run: |
-          ls -al
-          whoami
-          pwd
-          node -v
