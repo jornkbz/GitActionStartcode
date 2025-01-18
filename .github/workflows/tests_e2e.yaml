@@ -1,7 +1,7 @@
 name: E2E Tests
 
 on: 
-  workflow_dispatch:  # Se lanza manualmente (puedes usar push/pr si prefieres)
+  workflow_dispatch:
 
 jobs:
   run-e2e-tests:
@@ -10,26 +10,34 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v3
 
-      # 1. Levantar la API (puede ser tu propia imagen)
-      - name: Start Hangman API
-        run: docker run -d --name hangman-api -p 3001:3000 hangman-api
+      # 1) Build hangman-api
+      - name: Build hangman-api image
+        working-directory: .start-code/hangman-api
+        run: docker build -t hangman-api:latest .
 
-      # 2. Levantar el Front, apuntando a la API
-      - name: Start Hangman Front
-        run: docker run -d --name hangman-front -p 8080:8080 -e API_URL=http://localhost:3001 hangman-front
+      # 2) Build hangman-front
+      - name: Build hangman-front image
+        working-directory: .start-code/hangman-e2e/e2e
+        run: docker build -f "e2e.dockerfile" -t hangman-e2e:latest .
 
-      # (Opcional) Esperar unos segundos a que arranque todo
-      - name: Wait for containers
+      # 3) Run the containers
+      - name: Start hangman-api
+        run: docker run -d --name hangman-api -p 3001:3000 hangman-api:latest
+
+      - name: Start hangman-front
+        run: docker run -d --name hangman-front -p 8080:8080 \
+             -e API_URL=http://localhost:3001 \
+             hangman-front:latest
+
+      # (Opcional) Esperar a que inicien
+      - name: Wait containers
         run: sleep 5
 
-      # 3. Instalar dependencias de Cypress en hangman-e2e/e2e
+      # 4) Instalar y ejecutar los E2E
       - name: Install E2E dependencies
         working-directory: .start-code/hangman-e2e/e2e
         run: npm install
 
-      # 4. Ejecutar los tests E2E
-      # Si en tu package.json "npm run open" es un modo GUI y "npm run e2e" ejecuta en modo headless,
-      # usa ese script (o directamente "npx cypress run").
-      - name: Run E2E tests
+      - name: Run E2E
         working-directory: .start-code/hangman-e2e/e2e
-        run: npm run test  # o npm run e2e, o "npx cypress run"
+        run: npx cypress run  # o "npm run test", según tu script
