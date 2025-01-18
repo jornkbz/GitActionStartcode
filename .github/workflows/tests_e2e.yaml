@@ -25,9 +25,7 @@ jobs:
         run: docker run -d --name hangman-api -p 3001:3000 hangman-api:latest
 
       - name: Start hangman-front
-        run: docker run -d --name hangman-front -p 8080:8080 \
-             -e API_URL=http://localhost:3001 \
-             hangman-front:latest
+        run: docker run -d --name hangman-front -p 8080:8080 -e API_URL=http://localhost:3001 hangman-front:latest
 
       # (Opcional) Esperar a que inicien
       - name: Wait containers
