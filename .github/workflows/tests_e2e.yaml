@@ -1,0 +1,35 @@
+name: E2E Tests
+
+on: 
+  workflow_dispatch:  # Se lanza manualmente (puedes usar push/pr si prefieres)
+
+jobs:
+  run-e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      # 1. Levantar la API (puede ser tu propia imagen)
+      - name: Start Hangman API
+        run: docker run -d --name hangman-api -p 3001:3000 hangman-api
+
+      # 2. Levantar el Front, apuntando a la API
+      - name: Start Hangman Front
+        run: docker run -d --name hangman-front -p 8080:8080 -e API_URL=http://localhost:3001 hangman-front
+
+      # (Opcional) Esperar unos segundos a que arranque todo
+      - name: Wait for containers
+        run: sleep 5
+
+      # 3. Instalar dependencias de Cypress en hangman-e2e/e2e
+      - name: Install E2E dependencies
+        working-directory: .start-code/hangman-e2e/e2e
+        run: npm install
+
+      # 4. Ejecutar los tests E2E
+      # Si en tu package.json "npm run open" es un modo GUI y "npm run e2e" ejecuta en modo headless,
+      # usa ese script (o directamente "npx cypress run").
+      - name: Run E2E tests
+        working-directory: .start-code/hangman-e2e/e2e
+        run: npm run test  # o npm run e2e, o "npx cypress run"
