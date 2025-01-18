@@ -22,9 +22,11 @@ jobs:
       # 2. Construir la imagen Docker
       - name: Build the Docker image
         run: |
-          docker build -t ghcr.io/jornkbz/gitactionstartcode/hangman-front:latest . 
+          docker build -t ghcr.io/jornkbz/gitactionstartcode/hangman-front:latest  \ 
+          -f .start-code/hangman-front/Dockerfile \
+          .start-code/hangman-front
 
       # 3. Publicar la imagen en ghcr.io
       - name: Push the Docker image
         run: |
-          docker push ghcr.io/${{ github.repository }}/hangman-front:latest
+          docker push ghcr.io/jornkbz/gitactionstartcode/hangman-front:latest
