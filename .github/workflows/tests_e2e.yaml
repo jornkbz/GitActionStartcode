@@ -17,8 +17,8 @@ jobs:
 
       # 2) Build hangman-front
       - name: Build hangman-front image
-        working-directory: .start-code/hangman-e2e/e2e
-        run: docker build -f "e2e.dockerfile" -t hangman-e2e:latest .
+        working-directory: .start-code/hangman-front
+        run: docker build -t hangman-front:latest .
 
       # 3) Run the containers
       - name: Start hangman-api
