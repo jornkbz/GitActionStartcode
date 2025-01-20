@@ -1,7 +1,8 @@
 ## Ejercicio 01
 1. Se crea el repositorio
 2. Se crea  una rama diferente a main (muy importante este paso)
-![[Pasted image 20250120190451.png]]
+![image](https://github.com/user-attachments/assets/11f37663-8324-40ba-98cd-ff0adc1d09e5)
+
 A partir de ahora se trabajara en esta nueva rama para el resto de pasos:
 
 
@@ -74,7 +75,8 @@ jobs:
 4. El workflow solo se ejecutará cuando haya cambios en el proyecto "hangman-front" y exista una nueva pull request (deben darse las dos condiciones a la vez) 
 5. Una vez subidos los cambios se notificará con una pull_request la cual debemos aceptar para que se ejecute el workflow en la interfaz de gitHub del repositorio , se selecciona la rama y aparecerá un boton "contribute", se despliega y hay que seleccionar pull_request. Cuando se acepte el pull y halla cambios en el front se ejecutará el worklfow.
 
-![[Pasted image 20250118135904.png]]
+![image](https://github.com/user-attachments/assets/32e5c4a9-ca1e-46d7-aa85-75197b70e7d0)
+
 
 
 ## Ejercicio 2
@@ -84,7 +86,8 @@ package-registry
 
 
 3. Tras generar el token hay que generar el secreto para vincularlo al token .Para ello hay que meter el token en el secrets del proyecto:
-![[Pasted image 20250118133236.png]]
+![image](https://github.com/user-attachments/assets/e7de2051-7c66-4c7d-9bda-717d44513241)
+
 
 
 4. Crear el nuevo yaml y ejecutarlo manualmente.
@@ -157,10 +160,12 @@ jobs:
 5. Tras la ejecución tenemos este resultado
 
 
-![[Pasted image 20250118135630.png]]
+![image](https://github.com/user-attachments/assets/4ececdda-c158-4383-bd30-0bea47cdf5db)
+
 
 6. Como se puede apreciar en el apartado "Packages" se ha subido la imagen.
-![[Pasted image 20250118140224.png]]
+![image](https://github.com/user-attachments/assets/fe34a4bc-de1f-4673-acc2-2e378801d71a)
+
 
 
 ## Ejercicio 4: OPCIONAL
@@ -252,15 +257,18 @@ jobs:
 
 Este es el resultado tras la ejecución.
 
-![[Pasted image 20250118144832.png]]
+![image](https://github.com/user-attachments/assets/d98c6038-42b2-45fc-9767-b7b8583c6205)
+
 
 
 Este es el desglose:
 
-![[Pasted image 20250118144648.png]]
+![image](https://github.com/user-attachments/assets/fd33c634-9079-4e9e-8af0-461eadbfe5c7)
+
 
 Segunda parte del desglose:
 
-![[Pasted image 20250118144753.png]]
+![image](https://github.com/user-attachments/assets/8b5481f6-9b1c-4fac-8000-862e62420bcf)
+
 
 
