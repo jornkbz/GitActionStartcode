@@ -81,7 +81,8 @@ jobs:
 
 ## Ejercicio 2
 1. Primer paso es generar el token generar el token:
-![[Captura de pantalla 2025-01-17 141344.png]]
+![image](https://github.com/user-attachments/assets/e548ee28-b715-419d-9c03-b37d45d8f359)
+
 package-registry
 
 
